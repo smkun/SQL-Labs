@@ -4,6 +4,18 @@ SELECT id FROM airports WHERE city = 'New York';
 --find all destination airpports in Paris
 SELECT id FROM airports WHERE city = 'Paris';
 
+-- Find out how many routes originate from New York
+SELECT COUNT(*) AS routes_from_new_york
+FROM routes r
+JOIN airports a ON r.origin_id = a.id
+WHERE a.city = 'New York';
+
+--Find out how many routes have destinations in Paris 
+SELECT COUNT(*) AS routes_to_paris
+FROM routes r
+JOIN airports a ON r.dest_id = a.id
+WHERE a.city = 'Paris';
+
 --Combine the above steps to find out how many routes originate from New York and land in Paris
 SELECT COUNT(*) AS flights_count
 FROM routes r
